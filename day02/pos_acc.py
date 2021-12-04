@@ -63,6 +63,7 @@ def move(state, step):
     else:
         raise ValueError(f'movement undefined: {step[0]}')
 
+# 0-init position sequence
 pos = [np.r_[(0,)*3],]
 
 for step in rdata:
