@@ -11,21 +11,21 @@ import numpy as np
 in_Fp = 'test_input.txt'
 in_Fp = 'input.txt'
 
-def input_reader(fh):
-    block = []
-    while line := fh.readline():
-        line = line.strip()
-        #print('got line:', line)
-        if len(line) == 0:
-            #print('len 0')
-            yield block
-            block = []
-        else:
-            block.append(line)
+def input_reader(file):
+    with open(file, 'r') as fh:
+        block = []
+        while line := fh.readline():
+            line = line.strip()
+            #print('got line:', line)
+            if len(line) == 0:
+                #print('len 0')
+                yield block
+                block = []
+            else:
+                block.append(line)
                 
 
-with open(in_Fp, 'r') as fh:
-    boards = [b for b in input_reader(fh)]
+boards = [b for b in input_reader(in_Fp)]
 
 # draws input line
 draws = tuple(map(int, boards.pop(0)[0].split(',')))
