@@ -53,12 +53,13 @@ for d_cnt, draw in enumerate(draws):
     #for b,h in zip(blocks, hits):
     #    print(b[h])
     # checking
-    # get matrix shapes
+    # get matrix shapes, (if boards vary in size :)
     shapes = list(map(np.shape, hits))
-    # hit column sums
+    # per column hit sums
     h_col_sums = hits.sum(axis=1)
+    # per row hit sums
     h_row_sums = hits.sum(axis=2)
-    # column hits, row hits
+    # got full ?: column hits, row hits
     check_res = [(h_col_sums[i] == shp[0], 
                   h_row_sums[i] == shp[1]) 
                     for i, shp in enumerate(shapes)]
@@ -88,12 +89,13 @@ for d_cnt, draw in enumerate(draws):
     this_hit = boards == draw
     hits |= this_hit
     # checking
-    # get matrix shapes
+    # get matrix shapes, (if boards vary in size :)
     shapes = list(map(np.shape, hits))
-    # hit column sums
+    # per column hit sums
     h_col_sums = hits.sum(axis=1)
+    # per row hit sums
     h_row_sums = hits.sum(axis=2)
-    # column hits, row hits
+    # got full ?: column hits, row hits
     check_res = [(h_col_sums[i] == shp[0], 
                   h_row_sums[i] == shp[1]) 
                     for i, shp in enumerate(shapes)]
